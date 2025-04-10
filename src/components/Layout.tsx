@@ -9,17 +9,26 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-
-      <div className="container mx-auto px-4 sm:px-6 md:px-12">
-        <main className="flex flex-col md:flex-row">
+      
+      <div className="flex-1 flex flex-col md:flex-row max-w-7xl mx-auto w-full">
+        {/* Left Sidebar - Hidden on mobile, shown on md+ */}
+        <aside className="hidden md:block md:w-60 lg:w-64 shrink-0">
           <LeftSidebar />
-          <section className="flex-1">{children}</section>
-          <RightSidebar />
+        </aside>
+        
+        {/* Main Content */}
+        <main className="flex-1 px-2 py-2 md:px-2 lg:px-2 mx-1 md:mx-2">
+          {children}
         </main>
+        
+        {/* Right Sidebar - Hidden on mobile, shown on lg+ */}
+        <aside className="hidden lg:block lg:w-72 shrink-0">
+          <RightSidebar />
+        </aside>
       </div>
-
+      
       <Footer />
     </div>
   );
