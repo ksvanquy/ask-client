@@ -4,22 +4,22 @@ import Link from "next/link";
 
 export default function ForgotPasswordPage() {
   return (
-    <main className="flex justify-center items-center min-h-screen px-4">
-      <section className="bg-white p-8 rounded-xl shadow-md max-w-md w-full space-y-6">
-        {/* Tiêu đề */}
-        <h1 className="text-2xl font-bold text-center text-blue-700">
+    <section className="flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-12 bg-input">
+      <div className="bg-background p-8 rounded-xl shadow-md max-w-md w-full border border-border">
+        {/* Title */}
+        <h1 className="text-2xl font-bold text-center text-primary mb-1">
           Quên mật khẩu?
         </h1>
-        <p className="text-sm text-gray-500 text-center">
+        <p className="text-sm text-muted text-center mb-6">
           Nhập email của bạn và chúng tôi sẽ gửi hướng dẫn đặt lại mật khẩu.
         </p>
 
-        {/* Biểu mẫu lấy lại mật khẩu */}
+        {/* Form */}
         <form className="space-y-4">
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Email
             </label>
@@ -29,28 +29,37 @@ export default function ForgotPasswordPage() {
               name="email"
               required
               placeholder="Nhập địa chỉ email..."
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 font-semibold"
+              className="w-full bg-primary hover:bg-primary-dark text-white py-2 rounded-md font-medium transition-colors"
             >
               Gửi liên kết đặt lại mật khẩu
             </button>
           </div>
+          
+          <div className="flex items-center justify-center mt-2">
+            <button
+              type="button"
+              className="text-sm text-muted hover:text-primary transition-colors"
+            >
+              Xác nhận email
+            </button>
+          </div>
         </form>
 
-        {/* Link quay lại đăng nhập */}
-        <p className="text-sm text-center text-gray-600">
+        {/* Link to login */}
+        <p className="mt-4 text-center text-sm text-muted">
           Nhớ mật khẩu rồi?{" "}
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
+          <Link href="/auth/login" className="text-primary hover:text-primary-dark transition-colors">
             Quay lại đăng nhập
           </Link>
         </p>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

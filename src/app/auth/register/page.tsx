@@ -4,19 +4,22 @@ import Link from "next/link";
 
 export default function RegisterPage() {
   return (
-    <main className="flex justify-center items-center min-h-screen px-4 bg-gray-100">
-      <section className="bg-white p-8 rounded-xl shadow-md max-w-md w-full space-y-6">
+    <section className="flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-12 bg-input">
+      <div className="bg-background p-8 rounded-xl shadow-md max-w-md w-full border border-border">
         {/* Title */}
-        <h1 className="text-2xl font-bold text-center text-blue-700">
+        <h1 className="text-2xl font-bold text-center text-primary mb-1">
           Tạo tài khoản mới
         </h1>
+        <p className="text-sm text-muted text-center mb-6">
+          Điền thông tin để tạo tài khoản của bạn
+        </p>
 
         {/* Register Form */}
         <form className="space-y-4">
           <div>
             <label
               htmlFor="fullname"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Họ và tên
             </label>
@@ -25,14 +28,15 @@ export default function RegisterPage() {
               id="fullname"
               name="fullname"
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Nhập họ và tên của bạn"
             />
           </div>
 
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Tên đăng nhập
             </label>
@@ -41,14 +45,15 @@ export default function RegisterPage() {
               id="username"
               name="username"
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Chọn tên đăng nhập"
             />
           </div>
 
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Email
             </label>
@@ -57,14 +62,15 @@ export default function RegisterPage() {
               id="email"
               name="email"
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Nhập email của bạn"
             />
           </div>
 
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Mật khẩu
             </label>
@@ -73,14 +79,15 @@ export default function RegisterPage() {
               id="password"
               name="password"
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Tạo mật khẩu"
             />
           </div>
 
           <div>
             <label
               htmlFor="confirm-password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Xác nhận mật khẩu
             </label>
@@ -89,28 +96,38 @@ export default function RegisterPage() {
               id="confirm-password"
               name="confirm-password"
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Nhập lại mật khẩu"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 font-semibold"
+              className="w-full bg-primary hover:bg-primary-dark text-white py-2 rounded-md font-medium transition-colors"
             >
               Đăng ký
+            </button>
+          </div>
+          
+          <div className="flex items-center justify-center mt-2">
+            <button
+              type="button"
+              className="text-sm text-muted hover:text-primary transition-colors"
+            >
+              Xác nhận thông tin
             </button>
           </div>
         </form>
 
         {/* Link to login */}
-        <p className="text-sm text-center text-gray-600">
+        <p className="mt-4 text-center text-sm text-muted">
           Đã có tài khoản?{" "}
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
+          <Link href="/auth/login" className="text-primary hover:text-primary-dark transition-colors">
             Đăng nhập ngay
           </Link>
         </p>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

@@ -4,20 +4,22 @@ import Link from "next/link";
 
 export default function ResetPasswordPage() {
   return (
-    <main className="flex justify-center items-center min-h-screen px-4">
-      <section className="bg-white p-8 rounded-xl shadow-md max-w-md w-full space-y-6">
-        {/* Tiêu đề */}
-        <h1 className="text-2xl font-bold text-center text-blue-700">
+    <section className="flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-12 bg-input">
+      <div className="bg-background p-8 rounded-xl shadow-md max-w-md w-full border border-border">
+        {/* Title */}
+        <h1 className="text-2xl font-bold text-center text-primary mb-1">
           Đặt lại mật khẩu
         </h1>
+        <p className="text-sm text-muted text-center mb-6">
+          Vui lòng nhập mật khẩu mới cho tài khoản của bạn
+        </p>
 
-        {/* Form đặt lại mật khẩu */}
+        {/* Form */}
         <form className="space-y-4">
-          {/* Mật khẩu mới */}
           <div>
             <label
               htmlFor="new-password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Mật khẩu mới
             </label>
@@ -27,15 +29,14 @@ export default function ResetPasswordPage() {
               name="new-password"
               required
               placeholder="Nhập mật khẩu mới"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
 
-          {/* Xác nhận mật khẩu */}
           <div>
             <label
               htmlFor="confirm-new-password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground mb-1"
             >
               Xác nhận mật khẩu mới
             </label>
@@ -45,29 +46,37 @@ export default function ResetPasswordPage() {
               name="confirm-new-password"
               required
               placeholder="Nhập lại mật khẩu"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400"
+              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
 
-          {/* Nút cập nhật */}
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 font-semibold"
+              className="w-full bg-primary hover:bg-primary-dark text-white py-2 rounded-md font-medium transition-colors"
             >
               Cập nhật mật khẩu
             </button>
           </div>
+          
+          <div className="flex items-center justify-center mt-2">
+            <button
+              type="button"
+              className="text-sm text-muted hover:text-primary transition-colors"
+            >
+              Xác nhận mật khẩu mới
+            </button>
+          </div>
         </form>
 
-        {/* Quay lại đăng nhập */}
-        <p className="text-sm text-center text-gray-600">
+        {/* Link to login */}
+        <p className="mt-4 text-center text-sm text-muted">
           Nhớ lại mật khẩu?{" "}
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
+          <Link href="/auth/login" className="text-primary hover:text-primary-dark transition-colors">
             Đăng nhập
           </Link>
         </p>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

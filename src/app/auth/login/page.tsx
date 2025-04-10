@@ -1,81 +1,86 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   return (
-    <section className="flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-12 bg-input">
-      <div className="bg-background p-8 rounded-xl shadow-md max-w-md w-full border border-border">
-        {/* Logo */}
-        <div className="flex justify-center mb-4">
-          <Link href="/">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={48}
-              height={48}
-              className="rounded-full"
-            />
-          </Link>
-        </div>
-
-        {/* Heading */}
-        <h2 className="text-xl font-semibold text-center text-foreground mb-1">
-          Chào mừng trở lại
+    <section className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <Image
+          className="mx-auto h-10 w-auto"
+          src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+          alt="Logo công ty"
+          width={40}
+          height={40}
+        />
+        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
+          Đăng nhập vào tài khoản
         </h2>
-        <p className="text-sm text-muted text-center mb-6">
-          Vui lòng nhập thông tin để đăng nhập.
-        </p>
+      </div>
 
-        {/* Login form */}
-        <form className="space-y-4">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" action="#" method="POST">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-              Email
+            <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+              Địa chỉ email
             </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Nhập email của bạn"
-            />
+            <div className="mt-2">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                autoComplete="email"
+                required
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                placeholder="Nhập email của bạn"
+              />
+            </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1">
-              Mật khẩu
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="w-full px-3 py-2 bg-input border border-border rounded-md text-sm outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Nhập mật khẩu"
-            />
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-900">
+                Mật khẩu
+              </label>
+              <div className="text-sm">
+                <Link
+                  href="/auth/forgot-password"
+                  className="font-semibold text-indigo-600 hover:text-indigo-500"
+                >
+                  Quên mật khẩu?
+                </Link>
+              </div>
+            </div>
+            <div className="mt-2">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                required
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                placeholder="Nhập mật khẩu của bạn"
+              />
+            </div>
           </div>
 
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center">
-              <input type="checkbox" className="mr-2" />
-              <span className="text-muted">Ghi nhớ đăng nhập</span>
-            </label>
-            <Link href="/auth/forgot-password" className="text-primary hover:text-primary-dark transition-colors">
-              Quên mật khẩu?
-            </Link>
+          <div>
+            <button
+              type="submit"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Đăng nhập
+            </button>
           </div>
-
-          <button
-            type="submit"
-            className="w-full bg-primary hover:bg-primary-dark text-white py-2 rounded-md font-medium transition-colors"
-          >
-            Đăng nhập
-          </button>
         </form>
 
-        {/* Register link */}
-        <p className="mt-4 text-center text-sm text-muted">
+        <p className="mt-10 text-center text-sm text-gray-500">
           Chưa có tài khoản?{" "}
-          <Link href="/auth/register" className="text-primary hover:text-primary-dark transition-colors">
+          <Link
+            href="/auth/register"
+            className="font-semibold text-indigo-600 hover:text-indigo-500"
+          >
             Đăng ký ngay
           </Link>
         </p>
