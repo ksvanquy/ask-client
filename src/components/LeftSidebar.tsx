@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// Component LeftSidebar - Navigation menu for the application
+
 const links = [
   { href: "/", label: "🏠 Trang chủ" },
   { href: "/mon-toan", label: "📐 Môn Toán" },
