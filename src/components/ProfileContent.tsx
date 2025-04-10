@@ -7,8 +7,8 @@ export default function ProfileContent() {
   const [activeTab, setActiveTab] = useState("questions");
 
   return (
-    <div className="w-full">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow p-6">
+    <section className="flex-1 p-0 bg-gray-50 space-y-4">
+      <div className="max-w-5xl mx-auto rounded-2xl shadow p-6">
         {/* Avatar + Name */}
         <div className="flex items-center space-x-6">
           <Image
@@ -124,6 +124,6 @@ export default function ProfileContent() {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 } 
