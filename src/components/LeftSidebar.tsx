@@ -22,8 +22,8 @@ export default function LeftSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:block w-64 px-4 py-4 bg-white h-[calc(100vh-64px)] sticky top-16">
-      <nav className="space-y-1 text-sm text-gray-700">
+    <aside className="hidden lg:block w-64 px-4 py-4 bg-background h-[calc(100vh-64px)] sticky top-16">
+      <nav className="space-y-1 text-sm text-muted">
         {links.map(({ href, label }) => {
           const isActive = pathname === href;
           return (
@@ -32,8 +32,8 @@ export default function LeftSidebar() {
               href={href}
               className={`block px-3 py-2 rounded-md transition-all font-medium ${
                 isActive
-                  ? "bg-blue-50 text-blue-600"
-                  : "hover:bg-gray-100 hover:text-blue-600"
+                  ? "bg-primary/10 text-primary"
+                  : "hover:bg-primary/5 hover:text-primary"
               }`}
             >
               {label}

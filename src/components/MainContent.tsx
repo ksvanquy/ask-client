@@ -6,7 +6,7 @@ import QuestionUserItem from "./QuestionUserItem";
 
 export default function MainContent() {
   return (
-    <section className="flex-1 p-6 bg-gray-50 space-y-4">
+    <section className="flex-1 p-0 bg-gray-50 space-y-4">
       {/* Dropdowns */}
       <div className="flex flex-wrap items-center gap-2">
         {/* Chọn lớp */}

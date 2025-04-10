@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const statusOptions = [
   { value: "all", label: "Tất cả" },
-  { value: "unanswered", label: "Chưa trả lời" },
+  { value: "pending", label: "Chờ trả lời" },
   { value: "answered", label: "Đã trả lời" },
-  { value: "first-time", label: "Lần đầu hỏi" },
+  { value: "closed", label: "Đã đóng" },
 ];
 
 export default function StatusDropdown() {
@@ -14,30 +14,32 @@ export default function StatusDropdown() {
   const [showMenu, setShowMenu] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = () => setShowMenu((prev) => !prev);
-
-  const selectedLabel =
-    statusOptions.find((option) => option.value === selectedValue)?.label || "";
+  const selectedLabel = statusOptions.find((opt) => opt.value === selectedValue)?.label || "Tất cả";
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (!dropdownRef.current?.contains(e.target as Node)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowMenu(false);
       }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleMenu}
-        className="bg-white border border-gray-300 px-3 py-1 rounded-md text-sm flex items-center space-x-2"
+        className="bg-background border border-border px-3 py-1 rounded-md text-sm flex items-center space-x-2 text-muted hover:border-primary hover:text-primary transition-colors"
       >
         <span>{selectedLabel}</span>
         <svg
-          className="w-4 h-4 text-gray-500"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -52,12 +54,12 @@ export default function StatusDropdown() {
       </button>
 
       {showMenu && (
-        <ul className="absolute z-10 mt-1 w-40 bg-white border border-gray-200 rounded-md shadow-md p-1 text-sm">
+        <ul className="absolute z-10 mt-1 w-40 bg-background border border-border rounded-md shadow-md p-1 text-sm">
           {statusOptions.map(({ value, label }) => (
             <li
               key={value}
-              className={`cursor-pointer px-3 py-1 hover:bg-gray-100 flex justify-between ${
-                selectedValue === value ? "font-semibold text-purple-600" : ""
+              className={`cursor-pointer px-3 py-1 hover:bg-primary/5 flex justify-between ${
+                selectedValue === value ? "font-semibold text-primary" : "text-muted hover:text-primary"
               }`}
               onClick={() => {
                 setSelectedValue(value);
